@@ -4,8 +4,6 @@ Provision a small, self-healing fleet of EC2 instances that automatically join
 an **existing Teleport Cloud** cluster. The nodes can run the Teleport **Node,
 App, or Database** services and implements AWS EC2 best practices.
 
----
-
 ## Features
 
 * **One-Command Deploy** – Launches an Auto Scaling Group behind the scenes;
@@ -21,8 +19,6 @@ App, or Database** services and implements AWS EC2 best practices.
   `tp_config.db_service.enabled = true`, enabling discovery and IAM auth.
 * **Hygienic Networking & IAM** – No public IPs, IMDSv2 enforced, least-priv
   policies, single inbound rule limited to the SG itself for Teleport gossip.
-
----
 
 ## Usage
 
@@ -40,8 +36,6 @@ module "teleport_nodes" {
   vpc_subnet_ids      = ["subnet-1234abcd", "subnet-5678efgh"]
 }
 ```
-
----
 
 ## Inputs
 In addition to the variables documented below, this module includes several
@@ -65,8 +59,6 @@ for more details on these variables.
 | `vpc_subnet_ids`                         | Subnet IDs for the ASG.                                                                 |     `list(string)`    |          `[]`          |  **yes** |
 | `vpc_security_group_ids`                 | Extra SGs to attach.                                                                    |     `list(string)`    |          `[]`          |    no    |
 | `experimental_mode`                      | Shorter CW log retention & zero-health refresh for dev.                                 |         `bool`        |         `false`        |    no    |
-
----
 
 ## Outputs
 
