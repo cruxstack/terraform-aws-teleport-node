@@ -34,7 +34,7 @@ data "aws_partition" "current" {}
 
 module "node" {
   source  = "cloudposse/ec2-autoscale-group/aws"
-  version = "0.41.0"
+  version = "0.41.1"
 
   image_id                = module.this.enabled ? data.aws_ssm_parameter.linux_ami[0].value : ""
   instance_type           = "t3.nano"
