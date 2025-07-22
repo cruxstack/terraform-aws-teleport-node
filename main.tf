@@ -39,7 +39,7 @@ module "node" {
   image_id                = module.this.enabled ? data.aws_ssm_parameter.linux_ami[0].value : ""
   instance_type           = "t3.nano"
   health_check_type       = "EC2"
-  user_data_base64        = base64encode(module.this.enabled ? data.template_cloudinit_config.this[0].rendered : "")
+  user_data_base64        = base64encode(module.this.enabled ? data.cloudinit_config.this[0].rendered : "")
   force_delete            = true
   disable_api_termination = false
   update_default_version  = true
@@ -85,7 +85,7 @@ module "node" {
   context = module.this.context
 }
 
-data "template_cloudinit_config" "this" {
+data "cloudinit_config" "this" {
   count = module.this.enabled ? 1 : 0
 
   gzip          = true
