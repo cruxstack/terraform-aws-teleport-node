@@ -63,7 +63,7 @@ module "node" {
   max_size                          = local.instance_capacity.max
   max_instance_lifetime             = "604800"
   wait_for_capacity_timeout         = "300s"
-  tag_specifications_resource_types = ["instance", "volume", "spot-instances-request"]
+  tag_specifications_resource_types = var.instance_spot.enabled ? ["instance", "volume", "spot-instances-request"] : ["instance", "volume"]
 
   mixed_instances_policy = {
     instances_distribution = {
